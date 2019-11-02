@@ -2,6 +2,7 @@ on: push
 
 jobs:
   build:
+    name: ${{ matrix.os }} / Node v${{ matrix.node-version }}
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
