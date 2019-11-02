@@ -8,10 +8,10 @@
         "start": "webpack-dev-server --mode development --watch --hot --progress --color --port 3000",
         "build": "rm -rf 'dist/*' && webpack-cli --mode production --progress --color",
         "tcm": "tcm src -c && yarn pretty -- --fix",
-        "eslint": "eslint --max-warnings 200 \"src/**/*.{ts,tsx}\"",
-        "format-check": "prettier --check \"src/**/*.{ts,tsx}\"",
+        "eslint": "eslint --max-warnings 200 \"src/**/*.ts\"",
+        "format-check": "prettier --check \"src/**/*.ts\"",
         "format-fix": "yarn eslint --fix",
-        "pretty": "prettier --write \"src/**/*.{ts,tsx}\"",
+        "pretty": "prettier --write \"src/**/*.ts\"",
         "lint": "yarn pretty && yarn eslint"
     },
     "license": "MIT",
