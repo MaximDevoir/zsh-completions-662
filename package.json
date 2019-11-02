@@ -7,8 +7,7 @@
         "test": "./test.sh",
         "start": "webpack-dev-server --mode development --watch --hot --progress --color --port 3000",
         "build": "rm -rf 'dist/*' && webpack-cli --mode production --progress --color",
-        "tcm": "tcm src -c && yarn pretty -- --fix",
-        "eslint": "eslint --max-warnings 200 \"src/**/*.ts\"",
+        "eslint": "eslint --max-warnings 200 \"src/**/*.{ts,tsx}\"",
         "format-check": "prettier --check \"src/**/*.ts\"",
         "format-fix": "yarn eslint --fix",
         "pretty": "prettier --write \"src/**/*.ts\"",
@@ -26,7 +25,6 @@
     },
     "dependencies": {
         "@babel/preset-typescript": "^7.6.0",
-        "antd": "^3.23.6",
         "axios": "^0.18.0",
         "classnames": "^2.2.6"
     },
