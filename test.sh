@@ -21,9 +21,11 @@ _yarn_scripts() {
   local i runJSON
 
   runJSON=$(yarn run --json 2>/dev/null)
-  binaries=($(sed -E '/Commands available/!d;s/.*Commands available from binary scripts: ([^"]+)".*/\1/;s/.*"items":\[([^]]+).*/\1/;s/[" ]//g;s/:/\\:/g;s/,/\n\
+  # Newline strategy from https://unix.stackexchange.com/a/140769
+  binaries=($(sed -E '/Commands available/!d;s/.*Commands available from binary scripts: ([^"]+)".*/\1/;s/.*"items":\[([^]]+).*/\1/;s/[" ]//g;s/:/\\:/g;s/,/\
 /g' <<< "$runJSON"))
-  scriptNames=($(sed -E '/possibleCommands/!d;s/.*"items":\[([^]]+).*/\1/;s/[" ]//g;s/:/\\:/g;s/,/\n/g' <<< "$runJSON"))
+  scriptNames=($(sed -E '/possibleCommands/!d;s/.*"items":\[([^]]+).*/\1/;s/[" ]//g;s/:/\\:/g;s/,/\
+/g' <<< "$runJSON"))
   # scriptCommands=("${(@f)$(sed -E '/possibleCommands/!d;s/.*"hints":\{([^}]+)\}.*/\1/;s/"[^"]+"://g;s/:/\\:/g;s/","/\n/g;s/(^"|"$)//g' <<< "$runJSON")}")
 
 
