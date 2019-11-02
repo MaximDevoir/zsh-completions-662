@@ -35,7 +35,7 @@ _yarn_scripts() {
   commands=($scripts $binaries)
 
 
-  echo -e "\n\n binaries first element: $binaries"
+  echo -e "\n\nbinaries first element: $binaries"
   echo -e "binaries are"
   for bin in "${binaries[@]}"
   do
