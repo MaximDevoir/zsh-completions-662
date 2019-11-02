@@ -9,6 +9,12 @@ jobs:
         os: [macOS-10.14, ubuntu-18.04]
         node: ['10']
     steps:
+      - name: Install ZSH for Mac
+        if: matrix.os == 'macOS-10.14'
+        run: brew install zsh
+      - name: Install ZSH on Mac or WSL
+        if: matrix.os != 'macOS-10.14'
+        run: apt install zsh
       - uses: actions/checkout@v1
       - name: Setup node
         uses: actions/setup-node@v1
