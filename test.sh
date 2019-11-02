@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env zsh
 
 # Exit immediately if a command returns a non-zero status
 # set -e
@@ -26,6 +26,7 @@ _yarn_scripts() {
   binaries=($(sed -E '/Commands available/!d;s/.*Commands available from binary scripts: ([^"]+)".*/\1/;s/.*"items":\[([^]]+).*/\1/;s/[" ]//g;s/:/\\:/g;s/,/\'$'\n/g' <<< "$runJSON"))
   scriptNames=($(sed -E '/possibleCommands/!d;s/.*"items":\[([^]]+).*/\1/;s/[" ]//g;s/:/\\:/g;s/,/\'$'\n/g' <<< "$runJSON"))
   scriptCommands=("${(@f)$(sed -E '/possibleCommands/!d;s/.*"hints":\{([^}]+)\}.*/\1/;s/"[^"]+"://g;s/:/\\:/g;s/","/\'$'\n/g;s/(^"|"$)//g' <<< "$runJSON")}")
+  # scriptCommands=("${(@f)"$(sed -E '/possibleCommands/g' <<< "$runJSON")"}")
 
 
   # for (( i=1; i <= $#scriptNames; i++ )); do
@@ -49,7 +50,7 @@ _yarn_scripts() {
     echo "$sn"
   done
 
-  echo -e"\n\nscript commands first element: $scriptCommands"
+  echo -e "\n\nscript commands first element: $scriptCommands"
   echo "script names are:"
   for sc in "${scriptCommands[@]}"
   do
