@@ -21,8 +21,8 @@ _yarn_scripts() {
   local i runJSON
 
   runJSON=$(yarn run --json 2>/dev/null)
-  # Newline strategy from https://unix.stackexchange.com/a/140769 and for Mac OS
-  # specifically https://superuser.com/q/307165
+  # Some sed utilities (e.g. Mac OS / BSD) don't interpret `\n` in a replacement
+  # pattern as a newline. See https://superuser.com/q/307165
   binaries=($(sed -E '/Commands available/!d;s/.*Commands available from binary scripts: ([^"]+)".*/\1/;s/.*"items":\[([^]]+).*/\1/;s/[" ]//g;s/:/\\:/g;s/,/\'$'\n/g' <<< "$runJSON"))
   scriptNames=($(sed -E '/possibleCommands/!d;s/.*"items":\[([^]]+).*/\1/;s/[" ]//g;s/:/\\:/g;s/,/\'$'\n/g' <<< "$runJSON"))
   scriptCommands=("${(@f)$(sed -E '/possibleCommands/!d;s/.*"hints":\{([^}]+)\}.*/\1/;s/"[^"]+"://g;s/:/\\:/g;s/","/\'$'\n/g;s/(^"|"$)//g' <<< "$runJSON")}")
