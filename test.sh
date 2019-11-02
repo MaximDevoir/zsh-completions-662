@@ -25,7 +25,7 @@ _yarn_scripts() {
   # specifically https://superuser.com/a/307486
   binaries=($(sed -E '/Commands available/!d;s/.*Commands available from binary scripts: ([^"]+)".*/\1/;s/.*"items":\[([^]]+).*/\1/;s/[" ]//g;s/:/\\:/g;s/,/\'$'\n/g' <<< "$runJSON"))
   scriptNames=($(sed -E '/possibleCommands/!d;s/.*"items":\[([^]]+).*/\1/;s/[" ]//g;s/:/\\:/g;s/,/\'$'\n/g' <<< "$runJSON"))
-  # scriptCommands=("${(@f)$(sed -E '/possibleCommands/!d;s/.*"hints":\{([^}]+)\}.*/\1/;s/"[^"]+"://g;s/:/\\:/g;s/","/\'$'\n/g;s/(^"|"$)//g' <<< "$runJSON")}")
+  scriptCommands=("${(@f)$(sed -E '/possibleCommands/!d;s/.*"hints":\{([^}]+)\}.*/\1/;s/"[^"]+"://g;s/:/\\:/g;s/","/\'$'\n/g;s/(^"|"$)//g' <<< "$runJSON")}")
   # scriptCommands=("${(@f)$(sed -E '/possibleCommands/!d;
   # s/.*"hints":\{([^}]+)\}.*/\1/;
   # s/"[^"]+"://g;
@@ -33,13 +33,6 @@ _yarn_scripts() {
   # s/","/\'$'\n/g;
   # s/(^"|"$)//g' \
   # <<< "$runJSON")}")
-  scriptCommands=("${(@f)$(sed -E '/possibleCommands/!d;
-  s/.*"hints":\{([^}]+)\}.*/\1/;
-  s/"[^"]+"://g;
-  s/:/\\:/g;
-  s/","/\'$'\n/g;
-  s/(^"|"$)//g' \
-  <<< "$runJSON")}")
   echo "$scriptCommands"
   echo
   echo
