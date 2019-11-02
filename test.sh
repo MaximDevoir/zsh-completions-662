@@ -36,15 +36,15 @@ _yarn_scripts() {
   commands=($scripts $binaries)
 
 
-  echo "binaries first element: $binaries"
-  echo -e "\n\nbinaries are"
+  echo -e "\n\n binaries first element: $binaries"
+  echo -e "binaries are"
   for bin in "${binaries[@]}"
   do
     echo "$bin"
   done
 
-  echo "script names first element: $scriptNames"
-  echo -e "\n\nscript names are:"
+  echo -e "\n\nscript names first element: $scriptNames"
+  echo -e "script names are:"
   for sn in "${scriptNames[@]}"
   do
     echo "$sn"
