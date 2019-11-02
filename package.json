@@ -1,0 +1,38 @@
+{
+    "name": "zsh-completions-662",
+    "version": "0.1.0",
+    "private": true,
+    "main": "index.js",
+    "scripts": {
+        "test": "./test.sh",
+        "start": "webpack-dev-server --mode development --watch --hot --progress --color --port 3000",
+        "build": "rm -rf 'dist/*' && webpack-cli --mode production --progress --color",
+        "tcm": "tcm src -c && yarn pretty -- --fix",
+        "eslint": "eslint --max-warnings 200 \"src/**/*.{ts,tsx}\"",
+        "format-check": "prettier --check \"src/**/*.{ts,tsx}\"",
+        "format-fix": "yarn eslint --fix",
+        "pretty": "prettier --write \"src/**/*.{ts,tsx}\"",
+        "lint": "yarn pretty && yarn eslint"
+    },
+    "license": "MIT",
+    "devDependencies": {
+        "@babel/core": "^7.2.2",
+        "babel-loader": "^8.0.5",
+        "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
+        "babel-plugin-transform-remove-console": "^6.9.4",
+        "eslint-plugin-sonarjs": "^0.3.0",
+        "eslint-plugin-sort-destructure-keys": "^1.2.0",
+        "file-loader": "^3.0.1"
+    },
+    "dependencies": {
+        "@babel/preset-typescript": "^7.6.0",
+        "antd": "^3.23.6",
+        "axios": "^0.18.0",
+        "classnames": "^2.2.6"
+    },
+    "engines": {
+        "yarn": ">=1.12",
+        "node": ">=10.15",
+        "npm": ">=6.4.1"
+    }
+}
