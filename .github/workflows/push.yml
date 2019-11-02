@@ -12,7 +12,7 @@ jobs:
       - name: Install ZSH for Mac
         if: matrix.os == 'macOS-10.14'
         run: brew install zsh
-      - name: Install ZSH on Mac or WSL
+      - name: Install ZSH on Ubuntu or WSL
         if: matrix.os != 'macOS-10.14'
         run: sudo apt install zsh
       - uses: actions/checkout@v1
